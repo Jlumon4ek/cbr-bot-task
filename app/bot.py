@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher
 from handlers.command import register_command_handlers
 from handlers.callback import RegisterQueryHandler
 from utils.config import TOKEN
-from utils.currency import fetch_currencies_periodically
+from utils.currency import fetch_currencies
 import loguru 
 import sys
 
@@ -15,7 +15,7 @@ dp = Dispatcher()
 async def periodic_fetch():
     loguru.logger.info("Starting periodic fetch...")
     while True:
-        await fetch_currencies_periodically()
+        await fetch_currencies()
         await asyncio.sleep(12 * 3600)
 
 async def main():

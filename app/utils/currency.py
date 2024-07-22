@@ -3,7 +3,6 @@ import xml.etree.ElementTree as ET
 import redis.asyncio as aioredis
 import asyncio
 import loguru
-import sys
 
 async def fetch_currencies():
     loguru.logger.info("Fetching currencies...")
@@ -54,8 +53,4 @@ async def get_currency(char_code: str):
     formatted_data['vunit_rate'] = float(formatted_data['vunit_rate'].replace(',', '.')) if 'vunit_rate' in formatted_data else None
     return formatted_data
 
-async def fetch_currencies_periodically():
-    loguru.logger.info("Fetching currencies periodically...")
-    while True:
-        await fetch_currencies()
-        await asyncio.sleep(43200)
+

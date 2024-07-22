@@ -11,13 +11,12 @@ async def register_command_handlers(dp, bot):
     
     @dp.message(Command("rates"))
     async def rates(message: types.Message):
-        await message.answer("Fetching exchange rates...")
-        await message.answer('Exchange rates are fetched!', reply_markup=await currencies())
+        await message.answer('Actual rates:', reply_markup=currencies)
 
     @dp.message(Command("exchange"))
     async def exchange(message: types.Message):
         parts = message.text.split()
-        if len(parts) < 4:
+        if len(parts) != 4:
             await message.answer("Usage: /exchange <from_currency> <to_currency> <amount>")
             return
 
