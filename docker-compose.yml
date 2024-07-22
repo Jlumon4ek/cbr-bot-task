@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  bot:
+    container_name: bot
+    build: 
+      context: .  
+      dockerfile: ./dockerfiles/Dockerfile
+    command: python3 bot.py
+    volumes:
+      - ./app:/usr/src/app
+    depends_on:
+      - redis
+      
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379:6379"

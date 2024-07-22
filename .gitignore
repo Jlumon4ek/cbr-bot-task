@@ -1,0 +1,15 @@
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.env
+venv/
+__pycache__/
+minio/
+data/
+*.env
+envs/
